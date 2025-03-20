@@ -1,0 +1,26 @@
+# Disable directory browsing
+Options -Indexes
+
+# Enable the rewrite engine
+RewriteEngine On
+
+# Custom 404 error page
+ErrorDocument 404 /404.html
+
+# Redirect URLs with .html to the version without .html
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
+RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+
+# If the request is for a directory that exists, leave it alone
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# If the request is for a file that exists, leave it alone
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Check if the requested URL with .html extension exists
+RewriteCond %{REQUEST_FILENAME}.html -f
+# If it exists, internally rewrite to the .html version
+RewriteRule ^(.*)$ $1.html [L]
+
+# All other requests that don't match existing files or directories
+# will fall through to the 404 handler
