@@ -149,19 +149,19 @@
   --color-slate-700: #40444d;
   --color-slate-800: #2b2e33;
   --color-slate-900: #15171a;
-  --color-primary: #93e85f;
-  --color-primary-10: #fcfefa;
-  --color-primary-25: #fafef7;
-  --color-primary-50: #f4fdef;
-  --color-primary-100: #e9fadf;
-  --color-primary-200: #d4f6bf;
-  --color-primary-300: #bef19f;
-  --color-primary-400: #a9ed7f;
-  --color-primary-500: #93e85f;
-  --color-primary-600: #76ba4c;
-  --color-primary-700: #588b39;
-  --color-primary-800: #3b5d26;
-  --color-primary-900: #1d2e13;
+  --color-primary: #2d5cf1;
+  --color-primary-10: #f2f5fe;
+  --color-primary-25: #e6eefe;
+  --color-primary-50: #dce7fd;
+  --color-primary-100: #b9cffb;
+  --color-primary-200: #95b7f8;
+  --color-primary-300: #729ff5;
+  --color-primary-400: #4e87f3;
+  --color-primary-500: #2d5cf1;
+  --color-primary-600: #1946d4;
+  --color-primary-700: #1335a0;
+  --color-primary-800: #0d246b;
+  --color-primary-900: #061235;
   --color-secondary: #fcf0e7;
   --color-secondary-10: #fffffe;
   --color-secondary-25: #fffefe;
@@ -3201,19 +3201,19 @@ header.uc-header.header-six > .uc-navbar-sticky .uc-navbar-main .uc-navbar {
   --bs-cyan-700-rgb: 34, 135, 153;
   --bs-cyan-800-rgb: 22, 90, 102;
   --bs-cyan-900-rgb: 11, 45, 51;
-  --bs-tertiary-rgb: 2, 88, 100;
-  --bs-tertiary-10-rgb: 247, 250, 250;
-  --bs-tertiary-25-rgb: 242, 247, 247;
-  --bs-tertiary-50-rgb: 230, 238, 240;
-  --bs-tertiary-100-rgb: 204, 222, 224;
-  --bs-tertiary-200-rgb: 154, 188, 193;
-  --bs-tertiary-300-rgb: 103, 155, 162;
-  --bs-tertiary-400-rgb: 53, 121, 131;
-  --bs-tertiary-500-rgb: 2, 88, 100;
-  --bs-tertiary-600-rgb: 2, 70, 80;
-  --bs-tertiary-700-rgb: 1, 53, 60;
-  --bs-tertiary-800-rgb: 1, 35, 40;
-  --bs-tertiary-900-rgb: 0, 18, 20;
+  --bs-tertiary-rgb: 28, 57, 150;
+  --bs-tertiary-10-rgb: 242, 245, 252;
+  --bs-tertiary-25-rgb: 236, 240, 250;
+  --bs-tertiary-50-rgb: 225, 232, 247;
+  --bs-tertiary-100-rgb: 208, 219, 242;
+  --bs-tertiary-200-rgb: 160, 183, 229;
+  --bs-tertiary-300-rgb: 113, 146, 216;
+  --bs-tertiary-400-rgb: 65, 110, 202;
+  --bs-tertiary-500-rgb: 28, 57, 150;
+  --bs-tertiary-600-rgb: 22, 46, 120;
+  --bs-tertiary-700-rgb: 17, 34, 90;
+  --bs-tertiary-800-rgb: 11, 23, 60;
+  --bs-tertiary-900-rgb: 6, 11, 30;
   --bs-quaternary-rgb: 212, 215, 194;
   --bs-quaternary-10-rgb: 254, 254, 253;
   --bs-quaternary-25-rgb: 253, 253, 252;
@@ -7012,7 +7012,10 @@ textarea.form-control-lg {
 
 .bg-primary-73500 {
     --bs-bg-opacity: 1;
-    background-color: #89cbff
+    background-color:rgba(
+        var(--bs-primary-rgb),
+        var(--bs-bg-opacity)
+      )
   }
 .bg-secondary-200 {
   --bs-bg-opacity: 1;
