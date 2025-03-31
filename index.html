@@ -88,6 +88,40 @@
 
     <!-- include scripts -->
     <script src="../assets/js/uni-core/js/uni-core-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const lottieAnim = document.getElementById('lockAnimation');
+        const lottieContainer = lottieAnim.closest('.panel');
+        let frameCount = 0;
+        lottieAnim.addEventListener('ready', () => {
+            frameCount = lottieAnim.getLottie().totalFrames;
+            lottieAnim.pause();
+        });
+        function getScrollProgress() {
+            const rect = lottieContainer.getBoundingClientRect();
+            const scrollStart = window.innerHeight * 1.5; 
+            const scrollEnd = window.innerHeight * 0.3;   
+            const scrollPosition = rect.top;
+            let progress = (scrollStart - scrollPosition) / (scrollStart - scrollEnd);
+            progress = Math.min(Math.max(progress, 0), 1);
+            return progress;
+        }
+        function updateAnimation() {
+            const rect = lottieContainer.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5) {
+                const progress = getScrollProgress();
+                const frame = Math.floor(progress * (frameCount - 1));
+                if (frameCount > 0) {
+                    lottieAnim.seek(frame);
+                }
+            }
+        }
+        window.addEventListener('scroll', function() {
+            requestAnimationFrame(updateAnimation);
+        });
+        setTimeout(updateAnimation, 100);
+    });
+</script>
 </head>
 <body class="uni-body panel bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200 overflow-x-hidden disable-cursor">
 
@@ -1031,7 +1065,7 @@
                                 </div>
                                 <div class="hero-scroll-scene panel max-w-850px mx-auto">
                                     <div class="panel border shadow-lg rounded-1-5 p-1 bg-white dark:bg-gray-800 overflow-hidden" data-anime="translateY: [80, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 450; delay: 950;">
-                                        <img class="rounded-default" src="assets\images\sch\african-woman-teaching-children-class.jpg" alt="Hero image">
+                                        <img class="rounded-default" src="assets\images\acamedium\school-director.jpg" alt="Hero image">
                                     </div>
                                 </div>
 
@@ -1214,112 +1248,141 @@
 <!-- Section end -->
  
 <!-- Section start -->
-<div id="builder_elements" class="builder-elements section panel">
+<div id="builder_elements" class="builder-elements section panel py-3">
     <div class="section-outer panel">
         <div class="container xl:max-w-xl">
             <div class="section-inner panel vstack items-center gap-3 xl:gap-4 text-center max-w-100" data-anime="onview: -100; targets: > *; translateY: [-40, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(200);">
-                <h4 class="h4 m-0">all Tools at your disposal</h4>
+                <div class="cstack gap-1 py-1 px-3 border rounded-pill">
+                    <span class="d-inline-block w-4px h-4px rounded-circle bg-primary dark:bg-secondary"></span>
+                    <span class="fs-8 fw-bold text-uppercase">How do We solve these problems?</span>
+                </div>
+                <p class="fs-4 lg:fs-3 xl:fs-2 max-w-lg mx-auto m-0">Acamedium <b>Eliminates Extra Work</b>  – So You Can Focus on <b>What Matters</b>s</p>
                 <div class="panel w-100">
                     <div class="swiper mask-x" data-uc-swiper="items: 2.5; gap: 16; center: true; center-bounds: true; autoplay: 7000; loop: true; speed: 7000; autoplay-delay: -1; autoplay-disableOnInteraction: true; allowTouchMove: false;" data-uc-swiper-m="items: 3; gap: 20;" data-uc-swiper-l="items: 5; gap: 24;">
                         <div class="swiper-wrapper items-center ease-linear">
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/section.svg" alt="Element : Section" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Section</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Event</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/column.svg" alt="Element : Column" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Column</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Attendance</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/div.svg" alt="Element : Div" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Div</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Student list</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/heading.svg" alt="Element : Heading" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Heading</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Home Work</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/form.svg" alt="Element : Form" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Form</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Evaluation Report</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/button.svg" alt="Element : Button" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Button</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Admission</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/divider.svg" alt="Element : Divider" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Divider</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Online Admission</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/spacer.svg" alt="Element : Spacer" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Spacer</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Class Time Table</span>
                                 </div>
                             </div>
+                            <div class="swiper-slide">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
+                                    <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/spacer.svg" alt="Element : Spacer" data-uc-svg>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Alumni</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="swiper mask-x my-2 md:my-3" data-uc-swiper="items: 2.5; gap: 16; center: true; center-bounds: true; autoplay: 7000; loop: true; speed: 7000; autoplay-delay: -1; autoplay-disableOnInteraction: true; autoplay-reverseDirection: true; allowTouchMove: false;" data-uc-swiper-m="items: 3; gap: 20;" data-uc-swiper-l="items: 5; gap: 24;">
                         <div class="swiper-wrapper items-center ease-linear">
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/divider.svg" alt="Element : Divider" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Divider</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Teacher's Schedule</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/spacer.svg" alt="Element : Spacer" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Spacer</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Exam</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/image.svg" alt="Element : Image" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Image</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Report Card</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
+                                    <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/image.svg" alt="Element : Image" data-uc-svg>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Reception</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
+                                    <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/image.svg" alt="Element : Image" data-uc-svg>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Live Class Room</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/video.svg" alt="Element : Video" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Video</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">CBT Exam</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/map.svg" alt="Element : Map" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Map</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Payroll</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/charts.svg" alt="Element : Charts" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Charts</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium"> Leave</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/blog.svg" alt="Element : Blog Posts" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Blog Posts</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Appraisal</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/portfolio.svg" alt="Element : Portfolio" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Portfolio</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Salary Advance</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
+                                    <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/portfolio.svg" alt="Element : Portfolio" data-uc-svg>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Library</span>
                                 </div>
                             </div>
                         </div>
@@ -1327,58 +1390,76 @@
                     <div class="swiper mask-x" data-uc-swiper="items: 2.5; gap: 16; center: true; center-bounds: true; autoplay: 7000; loop: true; speed: 7000; autoplay-delay: -1; autoplay-disableOnInteraction: true; allowTouchMove: false;" data-uc-swiper-m="items: 3; gap: 20;" data-uc-swiper-l="items: 5; gap: 24;">
                         <div class="swiper-wrapper items-center ease-linear">
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/video.svg" alt="Element : Video" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Video</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Offline Payments</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/map.svg" alt="Element : Map" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Map</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Expense & Icome</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
+                                    <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/map.svg" alt="Element : Map" data-uc-svg>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Help/Knowledgebase</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
+                                    <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/map.svg" alt="Element : Map" data-uc-svg>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Attachments</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/charts.svg" alt="Element : Charts" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Charts</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Student ID Card</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/blog.svg" alt="Element : Blog Posts" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Blog Posts</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Employee ID Card</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/portfolio.svg" alt="Element : Portfolio" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Portfolio</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Student Certificate</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/ecommerce.svg" alt="Element : Ecommerce" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Ecommerce</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Reports</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/content.svg" alt="Element : Text Content" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Text Content</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Broad Sheet</span>
                                 </div>
                             </div>
                             <div class="swiper-slide">
-                                <div class="cstack gap-1 md:gap-2 p-1 md:p-2 border rounded-pill">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
                                     <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/homepage.svg" alt="Element : Popups" data-uc-svg>
-                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Popups</span>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Account Statement</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="cstack gap-1 md:gap-2 p-1 md:p-1 border rounded-pill">
+                                    <img class="icon icon-1 md:icon-2 lg:icon-3 text-primary dark:text-secondary" src="../assets/images/common/icons/homepage.svg" alt="Element : Popups" data-uc-svg>
+                                    <span class="fs-7 md:fs-6 lg:fs-5 fw-medium">Hostel</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <a href="#" class="btn btn-sm lg:btn-md btn-primary px-3 md:mt-2 lg:mt-4">
-                    <span>View all elements</span>
+                    <span>View all Features</span>
                     <i class="icon icon-narrow unicon-arrow-right fw-bold rtl:rotate-180"></i>
                 </a>
             </div>
@@ -1392,21 +1473,54 @@
     <div class="section-outer panel py-3 md:py-3 ">
         <div class="container sm:max-w-lg xl:max-w-xl">
             <div class="section-inner panel">
-                <div class="panel vstack items-center gap-2 xl:gap-3 mb-1 max-w-650px mx-auto text-center" data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 200});">
-                    <span class="fw-bold text-primary dark:text-secondary">Work From Any Device!</span>
-                    <h2 class="h3 lg:h2 xl:h1 m-0">No Laptop? No Wahala!</h2>
-                    <p>Work from anywhere and everywhere!</p>
+                <div class="panel vstack items-center gap-2 xl:gap-3 mb-1 max-w-650px mx-auto text-center" data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1];">
+                    <!----<span class="fw-bold text-primary dark:text-secondary">No Barriers, No Limit</span> --->
+                    <h2 class="h3 lg:h2 xl:h1 m-0">One System, Every Device!</h2>
+                    <p>From the principal’s desktop to Teacher’s laptops, Dirctor's foldable to parents’ phones, and students’ tablets—our system unifies education everywhere.</p>
                 </div>
                 <div class="row child-cols-12 g-6 md:g-8" data-uc-scrollspy="target: >*; delay: 500; cls: uc-animation-slide-bottom-medium">
                     <div style="display: flex; justify-content: center;">
                         <div class="panel rounded-2 p-1" data-anime="translateY: [80, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 450; delay: 950;">
-                            <img src="assets/images/common/devicies.png" alt="Dashboard Acamedium" 
+                            <img src="assets\images\acamedium\devices.png" alt="Dashboard Acamedium" 
                                  style="max-width: 100%; height: auto; max-height: 500px; object-fit: contain;">
                         </div>
                     </div>
                 </div>
                    
                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section end -->
+
+ <!-- Section start -->
+ <div id="main_features" class="main-features section panel overflow-hidden">
+    <div class="section-outer panel py-3 md:py-3 ">
+        <div class="container sm:max-w-lg xl:max-w-xl">
+            <div class="section-inner panel">
+                <div class="panel vstack items-center gap-2 xl:gap-3 mb-1 max-w-650px mx-auto text-center" data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 200});">
+                    <!----<span class="fw-bold text-primary dark:text-secondary">No Barriers, No Limit</span> --->
+                    <h2 class="h3 lg:h2 xl:h1 m-0">Your Data, Our Priority</h2>
+                    <p>Peace of Mind, Guaranteed</p>
+                </div>
+                <div class="row child-cols-12 g-6 md:g-8" data-uc-scrollspy="target: >*; delay: 500; cls: uc-animation-slide-bottom-medium">
+                    <div style="display: flex; justify-content: center;">
+                        <div class="panel rounded-2 p-1" data-anime="translateY: [80, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 450; delay: 950;">
+                            <lottie-player id="lockAnimation" src="assets\images\acamedium\lottie\padlock.json" background="transparent" speed="1"
+                                style="width: 200px; height: auto; max-height: 500px; object-fit: contain;"></lottie-player>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel vstack items-center gap-2 xl:gap-3 mb-1 max-w-650px mx-auto text-center" data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 200});">
+                    <!----<span class="fw-bold text-primary dark:text-secondary">No Barriers, No Limit</span> --->
+                
+                    <p>Your data is safe with us, period. We protect all information with the same care as financial institutions, ensuring student records and school data remain private and secure. Our thorough protection works seamlessly across all devices, giving administrators, teachers, parents, and students the confidence to focus on what matters most—education</p>
+                </div>
                     </div>
                     
                 </div>
@@ -2901,7 +3015,7 @@
         <script defer src="../assets/js/form.js"></script>
         <script defer src="../assets/js/app.js"></script>
         <script src="assets\js\core\system.js"></script>
-
+        <script src="assets\js\lottie.js"></script>  
         <script>
             // Schema toggle via URL
             const queryString = window.location.search;
