@@ -99,8 +99,8 @@
         });
         function getScrollProgress() {
             const rect = lottieContainer.getBoundingClientRect();
-            const scrollStart = window.innerHeight * 1.1; 
-            const scrollEnd = window.innerHeight * 0.4;   
+            const scrollStart = window.innerHeight * 1.0; 
+            const scrollEnd = window.innerHeight * 0.5;   
             const scrollPosition = rect.top;
             let progress = (scrollStart - scrollPosition) / (scrollStart - scrollEnd);
             progress = Math.min(Math.max(progress, 0), 1);
