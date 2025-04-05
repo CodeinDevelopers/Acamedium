@@ -88,40 +88,7 @@
 
     <!-- include scripts -->
     <script src="../assets/js/uni-core/js/uni-core-bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const lottieAnim = document.getElementById('lockAnimation');
-        const lottieContainer = lottieAnim.closest('.panel');
-        let frameCount = 0;
-        lottieAnim.addEventListener('ready', () => {
-            frameCount = lottieAnim.getLottie().totalFrames;
-            lottieAnim.pause();
-        });
-        function getScrollProgress() {
-            const rect = lottieContainer.getBoundingClientRect();
-            const scrollStart = window.innerHeight * 1.0; 
-            const scrollEnd = window.innerHeight * 0.5;   
-            const scrollPosition = rect.top;
-            let progress = (scrollStart - scrollPosition) / (scrollStart - scrollEnd);
-            progress = Math.min(Math.max(progress, 0), 1);
-            return progress;
-        }
-        function updateAnimation() {
-            const rect = lottieContainer.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5) {
-                const progress = getScrollProgress();
-                const frame = Math.floor(progress * (frameCount - 1));
-                if (frameCount > 0) {
-                    lottieAnim.seek(frame);
-                }
-            }
-        }
-        window.addEventListener('scroll', function() {
-            requestAnimationFrame(updateAnimation);
-        });
-        setTimeout(updateAnimation, 100);
-    });
-</script>
+   
 </head>
 <body class="uni-body panel bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-200 overflow-x-hidden disable-cursor">
 
@@ -326,9 +293,46 @@
                     </button>
                 </header>
                     <ul class="nav-y gap-narrow fw-medium fs-6" data-uc-nav>
-                        <a class='btn btn-sm lg:btn-lg btn-primary text-white' href='/main/page-pricing'>Sign up</a>
-                                        <a href="#" class="btn btn-sm lg:btn-lg dark:text-white border-gray-900 dark:border-white border-opacity-20 hover:border-opacity-40" style="padding-left: 5px;">login</a>
-                                        <li class="hr opacity-10 my-1"></li>
+                        <li class="hr opacity-10 my-1"></li>
+                        <li class="uc-parent">
+                            <a href="#">Benefits</a>
+                            <ul class="uc-nav-sub" data-uc-nav="">
+                                <li class="uc-parent">
+                                    <a href='main/blog'>Blog</a>
+                                    <ul class="uc-nav-sub">
+                                        <li><a href='main/blog'>Full Width</a></li>
+                                        <li><a href='main/blog-2cols'>Grid 2 Cols</a></li>
+                                        <li><a href='main/blog-3cols'>Grid 3 Cols</a></li>
+                                        <li><a href='main/blog-4cols'>Grid 4 Cols</a></li>
+                                    </ul>
+                                </li>
+                                <li class="uc-parent">
+                                    <a href='main/blog-details'>Blog - detail</a>
+                                    <ul class="uc-nav-sub">
+                                        <li><a href='main/blog-details'>Blog detail</a></li>
+                                        <li><a href='main/blog-details-2'>Blog detail - v2</a></li>
+                                    </ul>
+                                </li>
+                                <li class="uc-parent">
+                                    <a href="#">Useful pages</a>
+                                    <ul class="uc-nav-sub">
+                                        <li><a href='main/sign-up'>Sign up</a></li>
+                                        <li><a href='main/sign-in'>Sign in</a></li>
+                                        <li><a href='main/reset-password'>Reset password</a></li>
+                                        <li><a href='main/404'>404 page</a></li>
+                                        <li><a href='main/coming-soon'>Coming soon</a></li>
+                                    </ul>
+                                </li>
+                                <li class="uc-parent">
+                                    <a href="#">Other pages</a>
+                                    <ul class="uc-nav-sub">
+                                        <li><a href='main/page-faq'>FAQ</a></li>
+                                        <li><a href='main/page-terms'>Terms of use</a></li>
+                                        <li><a href='main/page-privacy'>Privacy policy</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                         <li><a href='main/page-features'>Features</a></li>
                         <li><a href='main/page-pricing'>Pricing</a></li>
                         <li><a href='main/page-about'>About</a></li>
@@ -396,8 +400,8 @@
                             </ul>
                         </li>
                         <li class="hr opacity-10 my-1"></li>
-                        <li><a href='main/sign-up'>Create an account</a></li>
-                        <li><a href='main/sign-in'>Log in</a></li>
+                        <a class='btn btn-sm lg:btn-lg btn-primary text-white' href='/main/page-pricing'>Sign up</a>
+                        <a href="#" class="btn btn-sm lg:btn-lg dark:text-white border-gray-900 dark:border-white border-opacity-20 hover:border-opacity-40" style="padding-left: 5px;">login</a>
                         
                         
                     </ul>
@@ -1559,13 +1563,13 @@
 </div>
 
 <!-- Section end -->
-  <!-- Section start -->
+  <!-- Section start
   <div id="main_features" class="main-features section panel overflow-hidden">
     <div class="section-outer panel py-3 md:py-3 ">
         <div class="container sm:max-w-lg xl:max-w-xl">
             <div class="section-inner panel">
                 <div class="panel vstack items-center gap-2 xl:gap-3 mb-1 max-w-650px mx-auto text-center" data-anime="onview: -200; targets: >*; translateY: [48, 0]; opacity: [0, 1];">
-                    <!----<span class="fw-bold text-primary dark:text-secondary">No Barriers, No Limit</span> --->
+                    
                     <h2 class="h3 lg:h2 xl:h1 m-0">One System, Every Device!</h2>
                     <p>From the principal’s desktop to Teacher’s laptops, Dirctor's foldable to parents’ phones, and students’ tablets—our system unifies education everywhere.</p>
                 </div>
@@ -1587,7 +1591,65 @@
     </div>
 </div>
 
+Section end -->
+ <!-- Section start -->
+ <div id="how_it_works" class="how-it-works section panel overflow-hidden rounded-1-5 lg:rounded-2  dark:text-white">
+    <div class="section-outer panel">
+        <div class="container container-full">
+            <div class="section-inner panel">
+                <div class="row child-cols-12 col-match g-0">
+                    <div>
+                        <div class="panel">
+                            <div class="row child-cols-12 lg:child-cols-6 col-match items-center g-0">
+                                <div class="lg:order-2" data-anime="onview: -100; translateX: [-48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: 300;">
+                                    <figure class="featured-image m-0 rounded ratio ratio-1x1 overflow-hidden rounded-1-5 lg:rounded-2 lg:rounded-top-start-0">
+                                        <img src="assets\images\acamedium\20250405_204439.webp" alt="image title">
+                                    </figure>
+                                </div>
+                                <div class="order-1" data-anime="onview: -100; translateX: [48, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: 400;">
+                                    <div class="panel vstack items-start gap-2 lg:gap-3 p-3 md:p-4 lg:p-6 xl:p-8 xl:px-9 my-2 lg:my-0" data-anime="onview: -100; targets: >*; translateY: [16, 0]; opacity: [0, 1]; easing: easeOutCubic; duration: 500; delay: anime.stagger(100, {start: 500});">
+                                        <h3 class="h3 lg:h2 m-0">One System, Every Device!</h3>
+                                        <p class="fs-6 lg:fs-5">From the principal’s desktop to Teacher’s laptops, Dirctor's foldable to parents’ phones, and students’ tablets—our system unifies education everywhere.</p>
+                                        <div class="panel mt-2 lg:mt-4">
+                                            <div class="row child-cols-12 lg:child-cols-6 g-4">
+                                                <div>
+                                                    <div class="panel vstack items-start gap-2">
+                                                        <div>
+                                                            <img src="assets\images\acamedium\20250405_221130.webp" alt="feature-icon" data-uc-svg>
+                                                        </div>
+                                                        <div class="vstack gap-1 lg:gap-2">
+                                                            <h5 class="h5 lg:h4 m-0">Use Data & AI responsibly</h5>
+                                                            <p class="fs-6">Offers a unified platform that fosters innovation.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="panel vstack items-start gap-2">
+                                                        <div>
+                                                            <img src="assets\images\acamedium\20250405_221712.webp" alt="feature-icon" data-uc-svg>
+                                                        </div>
+                                                        <div class="vstack gap-1 lg:gap-2">
+                                                            <h5 class="h5 lg:h4 m-0">Use Data & AI responsibly</h5>
+                                                            <p class="fs-6">Offers a unified platform that fosters innovation.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Section end -->
+
+
 
  <!-- Section start -->
  <div id="main_features" class="main-features section panel overflow-hidden">
@@ -3042,13 +3104,24 @@
                     <div class="uc-footer-bottom panel vstack lg:hstack gap-4 justify-between text-center pt-4 lg:pt-3 border-top dark:text-white">
                         <p> &copy;
                             <script>new Date().getFullYear() > 2012 && document.write("" + new Date().getFullYear());</script>
-                             Acamedium | A <span style="color: #ff220a; font-weight: bold;">Codein</span><span style="color: #3d8882;font-weight: bold;">Developers</span> Company</p>
+                             Acamedium | From <span style="color: #ff220a; font-weight: bold;">Codein</span><span style="color: #3d8882;font-weight: bold;">Developers</span></p>
+                             <style>
+                                @keyframes pulse {
+                                    0% { transform: scale(1); opacity: 0.7; }
+                                    70% { transform: scale(2); opacity: 0; }
+                                    100% { transform: scale(1); opacity: 0; }
+                                }
+                            </style>
                              <div id="statusButton"
-                                            style="display: inline-flex; align-items: center; background-color: #f5f5f5; border: 0px solid #e1e1e1; border-radius:10px; padding: 8px 12px; font-size: 14px; color: #007ccc; font-family: Arial, sans-serif; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, border 0.3s ease; align-self: center;">
-                                            <span
-                                                style="display: inline-block; width: 8px; height: 8px; background-color: #007ccc; border-radius: 50%; margin-right: 8px;"></span>
-                                            All Systems Operational
-                                        </div>
+                             style="display: inline-flex; align-items: center; background-color: #f5f5f5; border: 0px solid #e1e1e1; border-radius:10px; padding: 8px 12px; font-size: 14px; color: #007ccc; font-family: Arial, sans-serif; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease, border 0.3s ease; align-self: center;">
+                            <div style="position: relative; display: inline-flex; align-items: center; justify-content: center; margin-right: 8px;">
+                                <!-- The actual dot -->
+                                <span style="position: relative; display: inline-block; width: 8px; height: 8px; background-color: #007ccc; border-radius: 50%; z-index: 2;"></span>
+                                <!-- The pulse effect container -->
+                                <div id="pulseEffect" style="position: absolute; width: 16px; height: 16px; background-color: rgba(0, 124, 204, 0.4); border-radius: 50%; z-index: 1; animation: pulse 2s infinite;"></div>
+                            </div>
+                            All Systems Operational
+                        </div>
                         <ul class="nav-x justify-center gap-2">
                             <li>
                                 <a href="#"><i class="icon icon-2 unicon-logo-linkedin"></i></a>
@@ -3078,6 +3151,40 @@
 <!-- Footer end -->
 
         <!-- include jquery & bootstrap js -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            const lottieAnim = document.getElementById('lockAnimation');
+            const lottieContainer = lottieAnim.closest('.panel');
+            let frameCount = 0;
+            lottieAnim.addEventListener('ready', () => {
+                frameCount = lottieAnim.getLottie().totalFrames;
+                lottieAnim.pause();
+            });
+            function getScrollProgress() {
+                const rect = lottieContainer.getBoundingClientRect();
+                const scrollStart = window.innerHeight * 1.0; 
+                const scrollEnd = window.innerHeight * 0.5;   
+                const scrollPosition = rect.top;
+                let progress = (scrollStart - scrollPosition) / (scrollStart - scrollEnd);
+                progress = Math.min(Math.max(progress, 0), 1);
+                return progress;
+            }
+            function updateAnimation() {
+                const rect = lottieContainer.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5) {
+                    const progress = getScrollProgress();
+                    const frame = Math.floor(progress * (frameCount - 1));
+                    if (frameCount > 0) {
+                        lottieAnim.seek(frame);
+                    }
+                }
+            }
+            window.addEventListener('scroll', function() {
+                requestAnimationFrame(updateAnimation);
+            });
+            setTimeout(updateAnimation, 100);
+        });
+    </script>
         <script defer src="../assets/js/libs/jquery.min.js"></script>
         <script defer src="../assets/js/libs/bootstrap.min.js"></script>
 

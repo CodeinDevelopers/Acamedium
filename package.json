@@ -1,0 +1,17 @@
+{
+  "name": "image-converter",
+  "version": "1.0.0",
+  "main": "webp.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "webp": "node To.webp.js",
+    "png": "node To.png.js"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^8.0.0",
+    "sharp": "^0.32.1"
+  }
+}
